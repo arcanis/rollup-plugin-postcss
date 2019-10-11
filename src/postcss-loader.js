@@ -189,7 +189,8 @@ export default {
       };`
     }
     if (!shouldExtract && shouldInject) {
-      output += `\nimport styleInject from '${styleInjectPath}';\nstyleInject(css${
+      const finalInjectPath = options.userInjectPath || styleInjectPath;
+      output += `\nimport styleInject from '${finalInjectPath}';\nstyleInject(css${
         Object.keys(options.inject).length > 0 ?
           `,${JSON.stringify(options.inject)}` :
           ''
